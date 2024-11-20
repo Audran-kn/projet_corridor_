@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdbool.h>
+void conditions_de_victoires();
+    // Fonction pour vérifier si le joueur 1 a gagné
+    bool joueur1_a_gagne(int x) {
+        // Le joueur 1 gagne si sa pièce atteint la ligne 0
+        return x == 0;
+    }
+
+    // Fonction pour vérifier si le joueur 2 a gagné
+    bool joueur2_a_gagne(int x) {
+        // Le joueur 2 gagne si sa pièce atteint la ligne 8
+        return x == 8;
+    }
+    int main() {
+        // Position des joueurs (x, y) sur le plateau 9x9
+        int x_joueur1 = 1; // Le joueur 1 commence à la ligne 8 (index 1 sur le plateau 9x9)
+        int y_joueur1 = 4; // Exemple: position (8,4)
+
+        int x_joueur2 = 7; // Le joueur 2 commence à la ligne 0 (index 7 sur le plateau 9x9)
+        int y_joueur2 = 4; // Exemple: position (0,4)
+
+        // Vérification des conditions de victoire
+        if (joueur1_a_gagne(x_joueur1)) {
+            printf("Le joueur 1 a gagné !\n");
+        } else if (joueur2_a_gagne(x_joueur2)) {
+            printf("Le joueur 2 a gagné !\n");
+        } else {
+            printf("Aucun joueur n'a encore gagné.\n");
+        }
+
+        return 0;
+    }
