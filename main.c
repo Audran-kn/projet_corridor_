@@ -30,7 +30,7 @@ int main() {
                 while (1) {
                     afficherPlateau(plateau);  // Afficher le plateau
 
-                    printf("Deplacez le pion (1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : ");
+                    printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
                     scanf(" %c", &direction);
 
                     if (direction == '5') {
@@ -42,7 +42,7 @@ int main() {
 
                     afficherPlateau(plateau);  // Afficher le plateau
 
-                    printf("Deplacez le pion (1 = bas, 2 = haut, 3 = droite, 4 = gauche, 5 = quitter) : ");
+                    printf("Deplacez le pion (0 = Sauter le tour, 1 = bas, 2 = haut, 3 = droite, 4 = gauche, 5 = quitter) : \n");
                     scanf(" %c", &direction2);
 
                     if (direction == '5') {
