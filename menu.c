@@ -27,6 +27,7 @@ void menu() {
                 int X = 8, Y = 4;  // Position initiale du pion (en bas au centre)
                 int XX = 0, YY = 4; // position initiale du pion 2 (en haut au centre)
                 char direction, direction2;
+                int joueurActif = 0;
 
                 // Demander le nombre de joueurs et leurs noms
                 demanderNombreDeJoueurs(&nombreJoueurs); // Passage par adresse
@@ -39,25 +40,19 @@ void menu() {
                 while (1) {
                     afficherPlateau(plateau);  // Afficher le plateau
 
-                    printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
+                    printf(" %s veuillez deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n", nomsJoueurs[joueurActif]);
                     scanf(" %c", &direction);
 
                     if (direction == '5') {
                         printf("Merci d'avoir joue !\n");
                         break;
                     }
-
-                    deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
-
-                    afficherPlateau(plateau);  // Afficher le plateau
-
-                    printf("Deplacez le pion (0 = Sauter le tour, 1 = bas, 2 = haut, 3 = droite, 4 = gauche, 5 = quitter) : \n");
-                    scanf(" %c", &direction2);
-
-                    if (direction == '5') {
-                        break;
+                    if (joueurActif == 0) {
+                        deplacerPion(plateau, &X, &Y, direction);
+                    }else {
+                        deplacerPion(plateau, &XX, &YY, direction);
                     }
-                    deplacerPion2(plateau, &XX, &YY, direction2);
+                    joueurActif = (joueurActif + 1)%2;
                 }
                 break;
 
