@@ -14,5 +14,5 @@ void deplacerPion(char plateau[9][9], int *X, int *Y, char direction) {
     else if (direction == '4' && *Y < 9 - 1) (*Y)++;  // Droite
     else if (direction == '0') (*Y)+0, (*X)+0;
 
-    plateau[*X][*Y] = 'O';
+    plateau[*X][*Y] = 0x03;
 }
