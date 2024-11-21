@@ -1,0 +1,23 @@
+#include <stdio.h>
+    // Fonction pour vérifier si le joueur 1 a gagné
+    bool joueur1_a_gagne(int x) {
+        // Le joueur 1 gagne si sa pièce atteint la ligne 0
+        return x == 0;
+    }
+
+    // Fonction pour vérifier si le joueur 2 a gagné
+    bool joueur2_a_gagne(int x) {
+        // Le joueur 2 gagne si sa pièce atteint la ligne 8
+        return x == 8;
+    }
+        // Vérification des conditions de victoire
+        if (joueur1_a_gagne(x_joueur1)) {
+            printf("Le joueur 1 a gagné !\n");
+        } else if (joueur2_a_gagne(x_joueur2)) {
+            printf("Le joueur 2 a gagné !\n");
+        } else {
+            printf("Aucun joueur n'a encore gagné.\n");
+        }
+
+        return 0;
+    }
