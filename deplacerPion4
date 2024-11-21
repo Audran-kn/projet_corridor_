@@ -1,0 +1,11 @@
+# include "header.h"
+
+void deplacerPion4(char plateau[9][9], int *XXXX, int *YYYY, char direction) {
+    plateau[*XXXX][*YYYY] = ' ';
+    if (direction == '1' && *XXXX > 0) (*XXXX)--;           // bas
+    else if (direction == '2' && *XXXX < 9 - 1) (*XXXX)++;  // haut
+    else if (direction == '3' && *YYYY > 0) (*YYYY)--;      // droite
+    else if (direction == '4' && *YYYY < 9 - 1) (*YYYY)++;  // gauche
+    else if (direction == '0') (*YYYY)+0, (*XXXX)+0;
+    plateau[*XXXX][*YYYY] = 0x06;
+}
