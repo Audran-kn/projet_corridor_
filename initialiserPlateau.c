@@ -11,7 +11,7 @@ void initialiserPlateau(char plateau[9][9], int X, int Y, int XX, int YY) {
         }
     }
     // Positionner le pion 1 initialement
-    plateau[X][Y] = 'O';
+    plateau[X][Y] = 0x03;
     // Positionner le pion 2 initialement
-    plateau[XX][YY] = 'x';
+    plateau[XX][YY] = 0x04;
 }
