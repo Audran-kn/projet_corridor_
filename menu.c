@@ -118,7 +118,7 @@ void menu() {
                             break;
                         }
                         case 2 : {
-                            printf("veuillez poser une barriere");
+                            printf("veuillez poser une barriere\n");
                             break;
                         }
                         case 3 : {
