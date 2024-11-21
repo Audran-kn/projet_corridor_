@@ -8,11 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
+
 
 
 #define MAX_JOUEURS 4
-#define INT_JOUEURS 2
-#define MIN_JOUEURS 1
+#define MIN_JOUEURS 2
 
 
 void deplacerPion(char plateau[9][9], int *X, int *Y, char direction);
@@ -23,6 +25,6 @@ void demanderNombreDeJoueurs(int *nombreJoueurs);
 void demanderNomsJoueurs(char nomsJoueurs[MAX_JOUEURS][25], int nombreJoueurs);
 void afficherNomsJoueurs(char nomsJoueurs[MAX_JOUEURS][25], int nombreJoueurs);
 void menu();
-void orientationBarrieres();
+void placerBarrieres(char plateau[9][9]);
 
 #endif //HEADER_H

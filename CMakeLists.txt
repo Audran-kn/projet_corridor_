@@ -13,4 +13,5 @@ add_executable(projet_corridor_ main.c
         demanderNomsJoueurs.c
         afficherNomsJoueurs.c
         menu.c
+        placerBarrieres.c
 )
