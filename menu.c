@@ -39,23 +39,41 @@ void menu() {
 
                 while (1) {
                     afficherPlateau(plateau);  // Afficher le plateau
+                    printf("1. deplacer le pion\n");
+                    printf("2. poser une barriere\n");
+                    printf("3. annuler le dernier coup\n");
 
-                    printf(" %s veuillez deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n", nomsJoueurs[joueurActif]);
-                    scanf(" %c", &direction);
+                    printf("votre choix : ");
+                    scanf("%d", &choix);
 
-                    if (direction == '5') {
-                        printf("Merci d'avoir joue !\n");
-                        break;
+                    switch (choix) {
+                        case 1 : {
+                            printf(" %s veuillez deplacer le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n", nomsJoueurs[joueurActif]);
+                            scanf(" %c", &direction);
+
+                            if (direction == '5') {
+                                printf("Merci d'avoir joue !\n");
+                                break;
+                            }
+                            if (joueurActif == 0) {
+                                deplacerPion(plateau, &X, &Y, direction);
+                            }else {
+                                deplacerPion(plateau, &XX, &YY, direction);
+                            }
+                            joueurActif = (joueurActif + 1)%2;
+                             break;
+                        }
+                        case 2 : {
+                            printf("veuillez poser une barriere");
+                            break;
+                        }
+                        case 3 : {
+                            printf("annulation de la derniere action");
+                            break;
+                        }
                     }
-                    if (joueurActif == 0) {
-                        deplacerPion(plateau, &X, &Y, direction);
-                    }else {
-                        deplacerPion(plateau, &XX, &YY, direction);
-                    }
-                    joueurActif = (joueurActif + 1)%2;
                 }
                 break;
-
             }
             case 2:
                 printf("\nReprise d'une partie sauvegardee...\n");
