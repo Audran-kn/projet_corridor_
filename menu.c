@@ -1,6 +1,7 @@
 //
-// Created by Audran on 19/11/2024.
+// Created by lucas on 21/11/2024.
 //
+
 #include "header.h"
 
 void menu() {
@@ -26,7 +27,9 @@ void menu() {
                 char plateau[9][9];
                 int X = 8, Y = 4;  // Position initiale du pion (en bas au centre)
                 int XX = 0, YY = 4; // position initiale du pion 2 (en haut au centre)
-                char direction, direction2;
+                int XXX = 4, YYY = 0;
+                int XXXX = 4, YYYY = 8;
+                char direction, direction2, direction3, direction4;
                 int joueurActif = 0;
 
                 // Demander le nombre de joueurs et leurs noms
@@ -35,7 +38,11 @@ void menu() {
                 afficherNomsJoueurs(nomsJoueurs, nombreJoueurs); // Afficher les noms pour verification
 
                 // Initialisation et affichage du plateau
-                initialiserPlateau(plateau, X, Y, XX, YY);
+                if (nombreJoueurs == 2) {
+                    initialiserPlateau(plateau, X, Y, XX, YY);
+                } else if (nombreJoueurs == 4) {
+                    initialiserPlateau4(plateau, X, Y, XX, YY, XXX, YYY, XXXX, YYYY);
+                }
 
                 while (1) {
                     afficherPlateau(plateau);  // Afficher le plateau
@@ -48,27 +55,74 @@ void menu() {
 
                     switch (choix) {
                         case 1 : {
-                            printf(" %s veuillez deplacer le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n", nomsJoueurs[joueurActif]);
-                            scanf(" %c", &direction);
+                            if (nombreJoueurs == 2) {
+                                afficherPlateau(plateau);  // Afficher le plateau
 
-                            if (direction == '5') {
-                                printf("Merci d'avoir joue !\n");
-                                break;
+                                printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
+                                scanf(" %c", &direction);
+
+                                if (direction == '5') {
+                                    break;
+                                }
+
+                                deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
+
+                                afficherPlateau(plateau);  // Afficher le plateau
+
+                                printf("Deplacez le pion (0 = Sauter le tour, 1 = bas, 2 = haut, 3 = droite, 4 = gauche, 5 = quitter) : \n");
+                                scanf(" %c", &direction2);
+
+                                if (direction == '5') {
+                                    break;
+                                }
+                                deplacerPion2(plateau, &XX, &YY, direction2);
+                            } else if (nombreJoueurs == 4) {
+                                afficherPlateau(plateau);  // Afficher le plateau
+
+                                printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
+                                scanf(" %c", &direction);
+
+                                if (direction == '5') {
+                                    break;
+                                }
+
+                                deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
+
+                                afficherPlateau(plateau);  // Afficher le plateau
+
+                                printf("Deplacez le pion (0 = Sauter le tour, 1 = bas, 2 = haut, 3 = droite, 4 = gauche, 5 = quitter) : \n");
+                                scanf(" %c", &direction2);
+
+                                if (direction == '5') {
+                                    break;
+                                }
+                                deplacerPion2(plateau, &XX, &YY, direction2);
+
+                                afficherPlateau(plateau);
+                                printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
+                                scanf(" %c", &direction3);
+                                if (direction == '5') {
+                                    break;
+                                }
+                                deplacerPion3(plateau, &XXX, &YYY, direction3);
+
+                                afficherPlateau(plateau);
+                                printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
+                                scanf(" %c", &direction4);
+                                if (direction == '5') {
+                                    break;
+                                }
+                                deplacerPion4(plateau, &XXXX, &YYYY, direction4);
+                                afficherPlateau(plateau);
                             }
-                            if (joueurActif == 0) {
-                                deplacerPion(plateau, &X, &Y, direction);
-                            }else {
-                                deplacerPion(plateau, &XX, &YY, direction);
-                            }
-                            joueurActif = (joueurActif + 1)%2;
-                             break;
+                            break;
                         }
                         case 2 : {
                             printf("veuillez poser une barriere");
                             break;
                         }
                         case 3 : {
-                            printf("annulation de la derniere action");
+                            printf("annulation de la derniere action\n");
                             break;
                         }
                     }
