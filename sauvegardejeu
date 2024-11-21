@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void sauvegardefichier() {
+    FILE* pf= NULL;
+    pf=fopen("sauvegardejeu.txt", "w");
+    if(pf==NULL) {
+        printf("Erreur\n");
+        exit(1);
+    }
+    else {
+        fprintf(pf, )
+    }
