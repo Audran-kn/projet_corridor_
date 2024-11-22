@@ -1,0 +1,65 @@
+int nombreJoueurs = 0;
+                char nomsJoueurs[MAX_JOUEURS][25];
+                char plateau[TAILLE][TAILLE];
+                int X = 8, Y = 4;  // Position initiale du pion (en bas au centre)
+                int XX = 0, YY = 4; // position initiale du pion 2 (en haut au centre)
+                char direction, direction2;
+                int joueurActif = 0;
+                int barrieresVerticales[TAILLE][TAILLE];
+                int barrieresHorizontales[TAILLE][TAILLE];
+
+                // Demander le nombre de joueurs et leurs noms
+                demanderNombreDeJoueurs(&nombreJoueurs); // Passage par adresse
+                demanderNomsJoueurs(nomsJoueurs, nombreJoueurs);
+                afficherNomsJoueurs(nomsJoueurs, nombreJoueurs); // Afficher les noms pour verification
+
+                // Initialisation et affichage du plateau
+                initialiserPlateau(plateau, X, Y, XX, YY);
+
+                while (1) {
+                    afficherPlateau(plateau);  // Afficher le plateau
+                    printf("1. deplacer le pion\n");
+                    printf("2. poser une barriere\n");
+                    printf("3. annuler le dernier coup\n");
+
+                    printf("votre choix : ");
+                    scanf("%d", &choix);
+
+                    switch (choix) {
+                        case 1 : {
+                            printf(" %s veuillez deplacer le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n", nomsJoueurs[joueurActif]);
+                            scanf(" %c", &direction);
+
+                            if (direction == '5') {
+                                printf("Merci d'avoir joue !\n");
+                                break;
+                            }
+                            if (joueurActif == 0) {
+                                deplacerPion(plateau, &X, &Y, direction);
+                            }else {
+                                deplacerPion(plateau, &XX, &YY, direction);
+                            }
+                            joueurActif = (joueurActif + 1)%2;
+                             break;
+                        }
+                        case 2 : {
+                            printf("veuillez poser une barriere");
+                            int bx, by;
+                            char orientation;
+                            printf("Entrez la position de la barrière (ligne colonne, ex: 2 3) : ");
+                            scanf("%d %d", &bx, &by);
+                            printf("Orientation (h = horizontale, v = verticale) : ");
+                            scanf(" %c", &orientation);
+
+                            if (placerBarrieres(plateau, barrieresVerticales, barrieresHorizontales, bx - 1, by - 1, orientation)) {
+                                joueurActif = (joueurActif + 1) % 2; // Changer de joueur si la barrière a été posée
+                            }
+                            break;
+                        }
+                        case 3 : {
+                            printf("annulation de la derniere action");
+                            break;
+                        }
+                    }
+                }
+                break;
