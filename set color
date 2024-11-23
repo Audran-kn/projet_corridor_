@@ -1,0 +1,8 @@
+#include "header.h"
+
+void setColor(int color) {
+#ifdef _WIN32
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+#endif
+}
