@@ -1,0 +1,25 @@
+#include"header.h"
+
+int verifierValiditeBarriere(char plateau[TAILLE][TAILLE], int x, int y, char orientation) {
+    if (x < 0 || x >= TAILLE || y < 0 || y >= TAILLE) {
+        printf("Coordonnées hors du plateau. Veuillez réessayer.\n");
+        return 0;
+    }
+
+    if (orientation == 'h') {
+        if (y + 1 >= TAILLE || plateau[x][y] != ' ') {
+            printf("Placement invalide pour une barrière horizontale. Veuillez réessayer.\n");
+            return 0;
+        }
+    } else if (orientation == 'v') {
+        if (x + 1 >= TAILLE || plateau[x][y] != ' ') {
+            printf("Placement invalide pour une barrière verticale. Veuillez réessayer.\n");
+            return 0;
+        }
+    } else {
+        printf("Orientation invalide. Veuillez entrer 'h' ou 'v'.\n");
+        return 0;
+    }
+
+    return 1;
+}
