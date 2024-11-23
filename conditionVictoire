@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
+
+void conditionVictoire2(int *X, int *Y, int *XX, int *YY, int *XXX, int *YYY, int *XXXX, int *YYYY, char nomsJoueurs[MAX_JOUEURS][25]) {
+
+    if (*X == 0) {
+        printf("%s a gagne la patie!", nomsJoueurs[1]);
+    exit(EXIT_SUCCESS);
+    } else if (*XX == 8) {
+        printf("%s a gagne la patie!", nomsJoueurs[2]);
+        exit(EXIT_SUCCESS);
+    } else if (*YYY == 8) {
+        printf("%s a gagne la patie!", nomsJoueurs[3]);
+        exit(EXIT_SUCCESS);
+    } else if (*YYYY == 0) {
+        printf("%s a gagne la patie!", nomsJoueurs[4]);
+        exit(EXIT_SUCCESS);
+    }
+}
