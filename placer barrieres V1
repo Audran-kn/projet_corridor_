@@ -1,0 +1,27 @@
+#include "header.h"
+
+void placerBarrieres(char plateau[TAILLE][TAILLE], int joueur, int *compteurBarriere) {
+    if (*compteurBarriere <= 0) {
+        printf("Le joueur %d n'a plus de barrières disponibles.\n", joueur + 1);
+        return;
+    }
+
+    int x, y;
+    char orientation;
+    do {
+        printf("Entrez les coordonnées pour placer une barrière (ex: 4 4) : ");
+        scanf("%d %d", &x, &y);
+        printf("Entrez l'orientation (h pour horizontale, v pour verticale) : ");
+        scanf(" %c", &orientation);
+    } while (!verifierValiditeBarriere(plateau, x, y, orientation));
+
+    if (orientation == 'h') {
+        plateau[x][y] = '-';
+    } else if (orientation == 'v') {
+        plateau[x][y] = '|';
+    }
+
+    (*compteurBarriere)--;
+    printf("Barrière placée par le joueur %d. Il lui reste %d barrières.\n", joueur + 1, *compteurBarriere);
+}
+
