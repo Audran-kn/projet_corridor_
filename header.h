@@ -34,6 +34,8 @@ void clear(int n);
 void placerBarrieres(char plateau[TAILLE][TAILLE], int joueur, int *compteurBarriere);
 int verifierValiditeBarriere(char plateau[TAILLE][TAILLE], int x, int y, char orientation);
 void setColor(int color);
+void conditionVictoire2(int *X, int *Y, int *XX, int *YY, int *XXX, int *YYY, int *XXXX, int *YYYY, char nomsJoueurs[MAX_JOUEURS][25]);
+
 
 
 #endif //HEADER_H
