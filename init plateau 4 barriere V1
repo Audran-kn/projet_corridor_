@@ -1,0 +1,13 @@
+#include "header.h"
+
+void initialiserPlateau4(char plateau[TAILLE][TAILLE], int X, int Y, int XX, int YY, int XXX, int YYY, int XXXX, int YYYY) {
+    for (int i = 0; i < TAILLE; i++) {
+        for (int j = 0; j < TAILLE; j++) {
+            plateau[i][j] = ' ';
+        }
+    }
+    plateau[X][Y] = 'O';
+    plateau[XX][YY] = 'X';
+    plateau[XXX][YYY] = 'A';
+    plateau[XXXX][YYYY] = 'B';
+}
