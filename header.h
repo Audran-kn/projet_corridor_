@@ -18,16 +18,16 @@
 #define MIN_JOUEURS 2
 
 
-void deplacerPion(char plateau[9][9], int *X, int *Y, char direction, int *XX, int *YY);
-void deplacerPion2(char plateau[9][9], int *XX, int *YY, char direction, int *X, int *Y);
+void deplacerPion(char plateau[9][9], int *X, int *Y, char direction, int *XXXX, int *YYYY, int *XX, int *YY, int *XXX, int *YYY);
+void deplacerPion2(char plateau[9][9], int *XX, int *YY, char direction, int *XXXX, int *YYYY, int *X, int *Y, int *XXX, int *YYY);
+void deplacerPion3(char plateau[9][9], int *XXX, int *YYY, char direction, int *X, int *Y, int *XX, int *YY, int *XXXX, int *YYYY);
+void deplacerPion4(char plateau[9][9], int *XXXX, int *YYYY, char direction, int *X, int *Y, int *XX, int *YY, int *XXX, int *YYY);
 void initialiserPlateau(char plateau[TAILLE][TAILLE], int X, int Y, int XX, int YY);
 void afficherPlateau(char plateau[TAILLE][TAILLE]);
 void demanderNombreDeJoueurs(int *nombreJoueurs);
 void demanderNomsJoueurs(char nomsJoueurs[MAX_JOUEURS][25], int nombreJoueurs);
 void afficherNomsJoueurs(char nomsJoueurs[MAX_JOUEURS][25], int nombreJoueurs);
 void menu();
-void deplacerPion3(char plateau[TAILLE][TAILLE], int *XXX, int *YYY, char direction);
-void deplacerPion4(char plateau[TAILLE][TAILLE], int *XXXX, int *YYYY, char direction);
 void initialiserPlateau4(char plateau[TAILLE][TAILLE], int X, int Y, int XX, int YY, int XXX, int YYY, int XXXX, int YYYY);
 int choixPremierJoueur(int nombreJoueurs);
 void clear(int n);
