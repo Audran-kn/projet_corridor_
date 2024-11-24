@@ -18,8 +18,8 @@
 #define MIN_JOUEURS 2
 
 
-void deplacerPion(char plateau[TAILLE][TAILLE], int *X, int *Y, char direction);
-void deplacerPion2(char plateau[TAILLE][TAILLE], int *XX, int *YY, char direction);
+void deplacerPion(char plateau[9][9], int *X, int *Y, char direction, int *XX, int *YY);
+void deplacerPion2(char plateau[9][9], int *XX, int *YY, char direction, int *X, int *Y);
 void initialiserPlateau(char plateau[TAILLE][TAILLE], int X, int Y, int XX, int YY);
 void afficherPlateau(char plateau[TAILLE][TAILLE]);
 void demanderNombreDeJoueurs(int *nombreJoueurs);
