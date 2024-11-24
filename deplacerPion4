@@ -1,11 +1,21 @@
 # include "header.h"
 
-void deplacerPion4(char plateau[9][9], int *XXXX, int *YYYY, char direction) {
+void deplacerPion4(char plateau[9][9], int *XXXX, int *YYYY, char direction, int *X, int *Y, int *XX, int *YY, int *XXX, int *YYY) {
     plateau[*XXXX][*YYYY] = ' ';
     if (direction == '1' && *XXXX > 0) (*XXXX)--;           // bas
     else if (direction == '2' && *XXXX < 9 - 1) (*XXXX)++;  // haut
     else if (direction == '3' && *YYYY > 0) (*YYYY)--;      // droite
     else if (direction == '4' && *YYYY < 9 - 1) (*YYYY)++;  // gauche
     else if (direction == '0') (*YYYY)+0, (*XXXX)+0;
+
+    if (*XXXX == *XX && *YYYY == *YY && direction == '1'||*XXXX == *X && *YYYY == *Y && direction == '1' ||*XXXX == *XXX && *YYYY == *YYY && direction == '1') {
+        (*XXXX)--; // Saut dans la même direction
+    } else if (*XXXX == *XX && *YYYY == *YY && direction == '2'||*XXXX == *X && *YYYY == *Y && direction == '2' ||*XXXX == *XXX && *YYYY == *YYY && direction == '2') {
+        (*XXXX)++;
+    } else if (*XXXX == *XX && *YYYY == *YY && direction == '3'||*XXXX == *X && *YYYY == *Y && direction == '3' ||*XXXX == *XXX && *YYYY == *YYY && direction == '3') {
+        (*YYYY)--;
+    } else if (*XXXX == *XX && *YYYY == *YY && direction == '4'||*XXXX == *X && *YYYY == *Y && direction == '4' ||*XXXX == *XXX && *YYYY == *YYY && direction == '4') {
+        (*YYYY)++;
+    }
     plateau[*XXXX][*YYYY] = 0x06;
 }
