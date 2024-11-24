@@ -1,0 +1,8 @@
+#include "header.h"
+
+void afficheScores(Joueur joueurs[MAX_JOUEURS]) {
+    printf("voici les scores : \n");
+    for (int i = 0; i < MAX_JOUEURS; i++) {
+        printf("%s : %d points \n", joueurs[i].noms, joueurs[i].score);
+    }
+}
