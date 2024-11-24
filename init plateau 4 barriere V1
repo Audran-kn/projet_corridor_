@@ -6,8 +6,8 @@ void initialiserPlateau4(char plateau[TAILLE][TAILLE], int X, int Y, int XX, int
             plateau[i][j] = ' ';
         }
     }
-    plateau[X][Y] = 'O';
-    plateau[XX][YY] = 'X';
-    plateau[XXX][YYY] = 'A';
-    plateau[XXXX][YYYY] = 'B';
+    plateau[X][Y] = 0x03;
+    plateau[XX][YY] = 0x04;
+    plateau[XXX][YYY] = 0x05;
+    plateau[XXXX][YYYY] = 0x06;
 }
