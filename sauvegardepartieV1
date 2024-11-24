@@ -1,0 +1,24 @@
+// Fonction pour sauvegarder l'état du plateau et les positions des joueurs dans un fichier
+void sauvegarderPartie(char plateau[PLATEAU_SIZE][PLATEAU_SIZE], int posJoueurs[MAX_JOUEURS][2]) {
+    FILE *fichier = fopen(FICHIER_SAUVEGARDE, "w");
+    if (fichier == NULL) {
+        printf("Erreur lors de l'ouverture du fichier de sauvegarde.\n");
+        return;
+    }
+
+    // Sauvegarde des positions des joueurs
+    for (int i = 0; i < MAX_JOUEURS; i++) {
+        fprintf(fichier, "%d %d\n", posJoueurs[i][0], posJoueurs[i][1]);
+    }
+
+    // Sauvegarde de l'état du plateau
+    for (int i = 0; i < PLATEAU_SIZE; i++) {
+        for (int j = 0; j < PLATEAU_SIZE; j++) {
+            fprintf(fichier, "%c ", plateau[i][j]);
+        }
+        fprintf(fichier, "\n");
+    }
+
+    fclose(fichier);
+    printf("Partie sauvegardée avec succès.\n");
+}
