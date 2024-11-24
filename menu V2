@@ -1,27 +1,34 @@
 #include "header.h"
-
+//menu proposé au joueur au début du jeu
 void menu() {
     int choix;
 
-    do {
+    srand(time(NULL));//génere un nombre aléatoire pour le premier joueur
+
+    do {//quoridor
         printf(" ####    #   #    ####   ####   #   ###     ####   ####\n");
         printf("#    #   #   #   #    #  #   #  #   #  #   #    #  #   #\n");
         printf("#    #   #   #   #    #  ####   #   #   #  #    #  ####\n");
         printf("#    #   #   #   #    #  # #    #   #  #   #    #  # #\n");
         printf(" #######  ###     ####   #  #   #   ###     ####   #  #\n");
         printf("\n           BY AUDRAN   LUCAS   PAUL                \n");
-        printf("\n-------------------- Menu --------------------\n");
+        getchar();
+        clear(30);//saute 3O lignes
+        printf("\n-------------------- Menu --------------------\n");//menu
         printf("1. Lancer une nouvelle partie\n");
         printf("2. Reprendre une partie sauvegardee\n");
         printf("3. Afficher l'aide\n");
         printf("4. Afficher les scores des joueurs\n");
         printf("5. Quitter le jeu\n");
         printf("---------------------------------------------\n");
-        printf("Votre choix : ");
+        printf("Votre choix : ");//demande le choix à l'utilisateur
         scanf("%d", &choix);
 
+        getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+        clear(30);
+
         switch (choix) {
-            case 1: {
+            case 1: {//si l'utilisateurs souhaite lancer une nouvelle partie
                 printf("\nLancement d'une nouvelle partie...\n");
 
                 int nombreJoueurs = 0;
@@ -32,32 +39,57 @@ void menu() {
                 int XXX = 4, YYY = 0;
                 int XXXX = 4, YYYY = 8;
                 char direction, direction2, direction3, direction4;
-                int joueurActif = 0;
+                int compteurBarriere[MAX_JOUEURS] = {10, 10, 5, 5}; // Compteur de barrières par joueur
+                int joueur;
+                int premierJoueur;
 
                 // Demander le nombre de joueurs et leurs noms
                 demanderNombreDeJoueurs(&nombreJoueurs); // Passage par adresse
+
+                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                clear(30);
+
                 demanderNomsJoueurs(nomsJoueurs, nombreJoueurs);
+
+                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                clear(30);
+
                 afficherNomsJoueurs(nomsJoueurs, nombreJoueurs); // Afficher les noms pour verification
 
-                // Initialisation et affichage du plateau
+                //tirage aléatoire pour le premier joueur
+                premierJoueur = choixPremierJoueur(nombreJoueurs);
+                printf("\nle joueur %d (%s) commencera la partie \n", premierJoueur, nomsJoueurs[premierJoueur-1]);
+
+                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                clear(30);
+
+                // Initialisation et affichage du plateau pour 2 joueurs
                 if (nombreJoueurs == 2) {
                     initialiserPlateau(plateau, X, Y, XX, YY);
                 } else if (nombreJoueurs == 4) {
                     initialiserPlateau4(plateau, X, Y, XX, YY, XXX, YYY, XXXX, YYYY);
+                } else {
+                    printf("nombre de joueurs invalides");
+                    continue;
                 }
 
                 while (1) {
+
+                    int joueur = 1;
+                    joueur--;
+
                     afficherPlateau(plateau);  // Afficher le plateau
+                    //on demande au joueur quelle action veut-il réaliser
                     printf("1. deplacer le pion\n");
                     printf("2. poser une barriere\n");
                     printf("3. annuler le dernier coup\n");
 
-                    printf("votre choix : ");
+                    printf("votre choix : ");//prise en compte du choix
                     scanf("%d", &choix);
 
                     switch (choix) {
-                        case 1 : {
-                            afficherPlateau(plateau);  // Afficher le plateau
+                        case 1 : {//si le joueur souhaite déplacer son pion
+
                             if (nombreJoueurs == 2) {
 
                                 printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
@@ -68,6 +100,9 @@ void menu() {
                                 }
 
                                 deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
+
+                                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                                clear(30);
 
                                 afficherPlateau(plateau);  // Afficher le plateau
                                 conditionVictoire2(&X, &Y, &XX, &YY, &XXX, &YYY, &XXXX, &YYYY, nomsJoueurs);
@@ -92,18 +127,26 @@ void menu() {
 
                                 deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
 
+                                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                                clear(30);
+
                                 afficherPlateau(plateau);  // Afficher le plateau
                                 conditionVictoire2(&X, &Y, &XX, &YY, &XXX, &YYY, &XXXX, &YYYY, nomsJoueurs);
+
                                 printf("Deplacez le pion (0 = Sauter le tour, 1 = bas, 2 = haut, 3 = droite, 4 = gauche, 5 = quitter) : \n");
                                 scanf(" %c", &direction2);
 
-                                if (direction == '5') {
+                                if (direction == '5') {//le joueur peut quitter à n'importe quel moment
                                     break;
                                 }
                                 deplacerPion2(plateau, &XX, &YY, direction2);
 
+                                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                                clear(30);
+
                                 afficherPlateau(plateau);
                                 conditionVictoire2(&X, &Y, &XX, &YY, &XXX, &YYY, &XXXX, &YYYY, nomsJoueurs);
+
                                 printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
                                 scanf(" %c", &direction3);
                                 if (direction == '5') {
@@ -111,38 +154,45 @@ void menu() {
                                 }
                                 deplacerPion3(plateau, &XXX, &YYY, direction3);
 
+                                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                                clear(30);
+
                                 afficherPlateau(plateau);
                                 conditionVictoire2(&X, &Y, &XX, &YY, &XXX, &YYY, &XXXX, &YYYY, nomsJoueurs);
+
                                 printf("Deplacez le pion (0 = Sauter le tour, 1 = haut, 2 = bas, 3 = gauche, 4 = droite, 5 = quitter) : \n");
                                 scanf(" %c", &direction4);
                                 if (direction == '5') {
                                     break;
                                 }
                                 deplacerPion4(plateau, &XXXX, &YYYY, direction4);
+
+                                getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
+                                clear(30);
+
                                 afficherPlateau(plateau);
                                 conditionVictoire2(&X, &Y, &XX, &YY, &XXX, &YYY, &XXXX, &YYYY, nomsJoueurs);
                             }
                             break;
                         }
-                        case 2 : {
+                        case 2 : {//si le joueur souhaite poser une barrrière
                             printf("veuillez poser une barriere\n");
+                            placerBarrieres(plateau, joueur, &compteurBarriere[joueur]);
                             break;
                         }
-                        case 3 : {
+                        case 3 : {//si le joueur souhaite annuler la dernière action
                             printf("annulation de la derniere action\n");
                             break;
                         }
                     }
-                }
-                break;
+                }break;
             }
-            case 2:
+            case 2://si l'utilisateur souhaite reprendre une partie sauvegardée
                 printf("\nReprise d'une partie sauvegardee...\n");
             // Placeholder: fonction à implémenter pour reprendre une partie sauvegardée
             break;
 
-            case 3 : {
-                printf("\nAffichage de l'aide...\n");
+            case 3 : {//si l'utilisateur souhaite consulter une aide
                 printf("\n===== REGLES DU JEU =====\n");
 
     printf("\n--- REGLES POUR 2 JOUEURS ---\n");
@@ -190,12 +240,12 @@ void menu() {
                 break;
             }
 
-            case 4:
+            case 4://si l'utilisateur souhaite consulter les scores en mémoires
                 printf("\nAffichage des scores des joueurs...\n");
             // Placeholder: fonction pour afficher les scores
             break;
 
-            case 5:
+            case 5://si l'utilisateurs souhaite quitter le jeu
                 printf("\ndeja finis ? alors a bientot jeune goat \n");
             break;
 
@@ -203,4 +253,5 @@ void menu() {
                 printf("\nOups, tu t'es tromper dans ton choix d'option.\n");
             break;
         }
-    } while (choix != 5);
+    } while (choix != 5);//tant que le choix est différent de "quitter le jeu" le menu s'affiche
+}
