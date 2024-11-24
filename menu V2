@@ -99,7 +99,7 @@ void menu() {
                                     break;
                                 }
 
-                                deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
+                                deplacerPion(plateau, &X, &Y, direction, &XX, &YY);  // Déplacer le pion (passage par référence pour X, Y)
 
                                 getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
                                 clear(30);
@@ -125,7 +125,7 @@ void menu() {
                                     break;
                                 }
 
-                                deplacerPion(plateau, &X, &Y, direction);  // Déplacer le pion (passage par référence pour X, Y)
+                                deplacerPion(plateau, &X, &Y, direction, &XX, &YY);  // Déplacer le pion (passage par référence pour X, Y)
 
                                 getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
                                 clear(30);
