@@ -72,13 +72,13 @@ void menu() {
                     printf("nombre de joueurs invalides");
                     continue;
                 }
+                afficherPlateau(plateau);  // Afficher le plateau
 
                 while (1) {
 
                     int joueur = 1;
                     joueur--;
 
-                    afficherPlateau(plateau);  // Afficher le plateau
                     //on demande au joueur quelle action veut-il réaliser
                     printf("1. deplacer le pion\n");
                     printf("2. poser une barriere\n");
