@@ -113,7 +113,7 @@ void menu() {
                                 if (direction == '5') {
                                     break;
                                 }
-                                deplacerPion2(plateau, &XX, &YY, direction2);
+                                deplacerPion2(plateau, &XX, &YY, direction2, &X, &Y);
                                 afficherPlateau(plateau);
                                 conditionVictoire2(&X, &Y, &XX, &YY, &XXX, &YYY, &XXXX, &YYYY, nomsJoueurs);
                             } else if (nombreJoueurs == 4) {
@@ -139,8 +139,7 @@ void menu() {
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
                                     break;
                                 }
-                                deplacerPion2(plateau, &XX, &YY, direction2);
-
+                                deplacerPion2(plateau, &XX, &YY, direction2, &X, &Y);
                                 getchar();//prend en compte la saisie de n'importe quel caractère pour sauter 30 lignes
                                 clear(30);
 
