@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void sauvegardefichier() {
+    void sauvegarderNoms(const char* nom_fichier, char nomsJoueurs[MAX_JOUEURS][MAX_NOM]) {
+        FILE* fichier = fopen(sauvegarderNoms, "w");  // Ouvre le fichier en mode écriture
+        if (fichier == NULL) {
+            printf("Erreur lors de l'ouverture du fichier pour la sauvegarde.\n");
+            return;
+        }
+
+        // Sauvegarder les noms dans le fichier
+        for (int i = 0; i < MAX_JOUEURS; i++) {
+            fprintf(fichier, "%s\n", nomsJoueurs[i]);  // Écrire chaque nom dans le fichier avec un saut de ligne
+        }
+
+        fclose(fichier);  // Ferme le fichier
+        printf("Noms des joueurs sauvegardés avec succès dans %s.\n", sauvegarderNoms);
+    }
+    fclose(fichier);  // Ferme le fichier
+    return 1;  // Succès du chargement
+}
