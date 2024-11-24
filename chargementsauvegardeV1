@@ -6,41 +6,35 @@ void chargerNoms(const char* sauvegarderNoms, char nomsJoueurs[MAX_JOUEURS][25])
         printf("Aucun fichier de noms de joueurs trouvé.\n");
         return;
     }
-
     // Chargement des noms des joueurs
     for (int i = 0; i < MAX_JOUEURS; i++) {
         fscanf(fichier, "%s", nomsJoueurs[i]);  // Lit chaque nom du fichier
     }
-
     fclose(fichier);  // Ferme le fichier
     printf("Noms des joueurs chargés avec succès.\n");
 }
-
-// Fonction pour charger la partie depuis le fichier
+// charger la partie depuis le fichier
 void chargerPartie(char plateau[9][9], int posJoueurs[MAX_JOUEURS][2]) {
     FILE *fichier = fopen(sauvegardepartie, "r");  // Ouvre le fichier de sauvegarde pour lecture
     if (fichier == NULL) {
         printf("Aucune partie sauvegardée trouvée.\n");
         return;
     }
-
-    // Chargement des positions des joueurs
+    // chargement des positions des joueurs
     for (int i = 0; i < MAX_JOUEURS; i++) {
         fscanf(fichier, "%d %d", &posJoueurs[i][0], &posJoueurs[i][1]);  // Lit les positions X et Y des joueurs
     }
 
-    // Chargement de l'état du plateau
+    // chargement de l'état du plateau
     for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
             fscanf(fichier, " %c", &plateau[i][j]);  // Lit chaque case du plateau
         }
     }
-
     fclose(fichier);  // Ferme le fichier de sauvegarde
     printf("Partie chargée avec succès.\n");
 }
-
-// Fonction pour afficher le plateau de jeu
+// afficher le plateau de jeu
 void afficherPlateau(char plateau[9][9]) {
     printf("État actuel du plateau :\n");
     for (int i = 0; i < 9; i++) {
