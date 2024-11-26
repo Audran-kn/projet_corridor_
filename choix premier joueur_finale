@@ -1,0 +1,7 @@
+
+# include "header.h"
+
+//choix aléatoire du joueur qui commence la partie
+int choixPremierJoueur(int nombreJoueurs) {
+    return rand() % nombreJoueurs + 1; //numéro entre 1 et nombreJoueurs
+}
