@@ -16,5 +16,5 @@ void sauvegarderPartie(char plateau[PLATEAU_SIZE][PLATEAU_SIZE], int posJoueurs[
         fprintf(fichier, "\n");
     }
     fclose(fichier);
-    printf("Partie sauvegardée avec succès.\n");
+    printf("Partie sauvegardee avec succes.\n");
 }
