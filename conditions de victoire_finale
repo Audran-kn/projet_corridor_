@@ -8,28 +8,28 @@ void conditionVictoire2(int *X, int *Y, int *XX, int *YY, int *XXX, int *YYY, in
         printf("\n#################################\n");
         printf(" %s a gagne la partie! \n", nomsJoueurs[1]);
         printf("vous gagnez 5 points en plus !");
-        printf("Score actuel : %d\n", joueurs[0].score);
+        printf("Score actuel : %d\n", joueurs[0].score + 5);
         printf("\n#################################\n");
         exit(EXIT_SUCCESS);
     } else if (*XX == 8) { //si le joueur 2 atteint la ligne 8 alors il gagne
         printf("\n#################################\n");
         printf(" %s a gagne la partie! \n", nomsJoueurs[2]);
         printf("vous gagnez 5 points en plus !");
-        printf("Score actuel : %d\n", joueurs[1].score);
+        printf("Score actuel : %d\n", joueurs[1].score + 5);
         printf("\n#################################\n");
         exit(EXIT_SUCCESS);
     } else if (*YYY == 8) { //si le joueur 3 atteint la colonne 8 alors il gagne
         printf("\n#################################\n");
         printf(" %s a gagne la partie! \n", nomsJoueurs[3]);
         printf("vous gagnez 5 points en plus !");
-        printf("Score actuel : %d\n", joueurs[2].score);
+        printf("Score actuel : %d\n", joueurs[2].score + 5);
         printf("\n#################################\n");
         exit(EXIT_SUCCESS);
     } else if (*YYYY == 0) { //si le joueur 4 atteint la colonne 0 alors il gagne
         printf("\n#################################\n");
         printf(" %s a gagne la partie! \n", nomsJoueurs[4]);
         printf("vous gagnez 5 points en plus !");
-        printf("Score actuel : %d\n", joueurs[3].score);
+        printf("Score actuel : %d\n", joueurs[3].score + 5);
         printf("\n#################################\n");
         exit(EXIT_SUCCESS);
     }
