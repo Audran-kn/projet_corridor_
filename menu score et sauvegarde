@@ -242,6 +242,8 @@ void menu() {
                 int XXX = 4, YYY = 0; // position initiale du pion 3 (au centre à gauche
                 int XXXX = 4, YYYY = 8; // position initiale du pion 4 (au centre à droite)
                 sauvegarderPartie("sauvegarde.bin", plateau, X, Y, XX, YY, XXX, YYY, XXXX, YYYY);
+                void chargerNoms ():
+                void chargerPartie ();
             }
 
             break;
