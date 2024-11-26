@@ -16,6 +16,7 @@
 #define TAILLE 9
 #define MAX_JOUEURS 4
 #define MIN_JOUEURS 2
+#define LARGEUR_CONSOLE 50
 
 
 void deplacerPion(char plateau[9][9], int *X, int *Y, char direction, int *XXXX, int *YYYY, int *XX, int *YY, int *XXX, int *YYY);
