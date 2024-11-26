@@ -104,6 +104,9 @@ void menu() {
                                 scanf(" %c", &direction);
 
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
+                                    printf("sauvegarde en cours");
+                                    void sauvegarderNoms ();
+                                    void sauvegarderPartie ();
                                     printf("merci d'avoir joue !");
                                     exit(EXIT_SUCCESS);
                                     break;
@@ -122,6 +125,9 @@ void menu() {
                                 scanf(" %c", &direction2);
 
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
+                                    printf("sauvegarde en cours");
+                                    void sauvegarderNoms ();
+                                    void sauvegarderPartie ();
                                     printf("merci d'avoir joue !");
                                     exit(EXIT_SUCCESS);
                                     break;
@@ -136,6 +142,9 @@ void menu() {
                                 scanf(" %c", &direction);
 
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
+                                    printf("sauvegarde en cours");
+                                    void sauvegarderNoms ();
+                                    void sauvegarderPartie ();
                                     printf("merci d'avoir joue !");
                                     exit(EXIT_SUCCESS);
                                     break;
@@ -155,6 +164,9 @@ void menu() {
                                 scanf(" %c", &direction2);
 
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
+                                    printf("sauvegarde en cours");
+                                    void sauvegarderNoms ();
+                                    void sauvegarderPartie ();
                                     printf("merci d'avoir joue !");
                                     exit(EXIT_SUCCESS);
                                     break;
@@ -171,6 +183,9 @@ void menu() {
                                 printf("si il y a une barriere signalee en rouge le deplacement est interdit\n");
                                 scanf(" %c", &direction3);
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
+                                    printf("sauvegarde en cours");
+                                    void sauvegarderNoms ();
+                                    void sauvegarderPartie ();
                                     printf("merci d'avoir joue !");
                                     exit(EXIT_SUCCESS);
                                     break;
