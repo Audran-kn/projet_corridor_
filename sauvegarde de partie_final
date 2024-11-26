@@ -1,0 +1,21 @@
+#include "header.h"
+
+void sauvegarderPartie(const char *nomFichier, char plateau[TAILLE][TAILLE], int X, int Y, int XX, int YY, int XXX, int YYY, int XXXX, int YYYY) {
+
+    FILE *f = fopen(nomFichier, "wb");
+    if (f == NULL) {
+        perror("Erreur lors de l'ouverture du fichier de sauvegarde");
+        return;
+    }
+    fwrite(plateau, sizeof(char), TAILLE * TAILLE, f);
+    fwrite(&X, sizeof(int), 1, f);
+    fwrite(&Y, sizeof(int), 1, f);
+    fwrite(&XX, sizeof(int), 1, f);
+    fwrite(&YY, sizeof(int), 1, f);
+    fwrite(&XXX, sizeof(int), 1, f);
+    fwrite(&YYY, sizeof(int), 1, f);
+    fwrite(&XXXX, sizeof(int), 1, f);
+    fwrite(&YYYY, sizeof(int), 1, f);
+    fclose(f);
+    printf("la partie a ete sauvegardee dans le fichier '%s'.\n", nomFichier);
+}
