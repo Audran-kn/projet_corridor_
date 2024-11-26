@@ -1,0 +1,38 @@
+
+#include "header.h"
+//placement des barrières
+void placerBarrieres(char plateau[TAILLE][TAILLE], int Joueur, int *compteurBarriere) {
+    if (*compteurBarriere <= 0) { //si le compteur de barrières d'un joueur est 0 un message s'affiche
+        printf("Le joueur %d n'a plus de barrieres disponibles.\n", Joueur + 1);
+        return;
+    }
+
+    int x, y;
+    char orientation;
+    do {
+        printf("Entrez les coordonnees du debut de la barriere a placer (ligne colonne ex : 4 5) : ");//demande des coordonnées de placement
+        scanf("%d %d", &x, &y);
+        printf("Entrez l'orientation (h pour horizontale, v pour verticale) : ");//demande l'orientation de la barrière
+        scanf(" %c", &orientation);
+    } while (!verifierValiditeBarriere(plateau, x, y, orientation));//boucle jusqu'à que la barrière saisie soit valide
+
+    if (orientation == 'h') {//si barrière horizontale
+        plateau[x-1][y-1] = '-';
+        plateau[x-1][y] = '-';
+    } else if (orientation == 'v') {//si barrière verticale
+        plateau[x-1][y-1] = '|';
+        plateau[x][y-1] = '|';
+    }
+
+    (*compteurBarriere)--;//le compteur de barrière est décrementer de 1 à chaque nouveau placement
+
+//indication du nombre de barrières restantes
+    printf("Barriere placee par le joueur %d. Il lui reste %d barrieres.\n", Joueur + 1, *compteurBarriere);
+}
+
+
+
+
+
+
+
