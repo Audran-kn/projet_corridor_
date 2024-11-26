@@ -89,6 +89,7 @@ void menu() {
                     printf("1. deplacer le pion\n");
                     printf("2. poser une barriere\n");
                     printf("3. annuler le dernier coup\n");
+                    printf("4. sauvegarder la partie\n");
 
                     printf("votre choix : ");//prise en compte du choix
                     scanf("%d", &choix);
@@ -186,7 +187,10 @@ void menu() {
                                 printf("si il y a une barriere signalee en rouge le deplacement est interdit\n");
                                 scanf(" %c", &direction4);
                                 if (direction == '5') {//le joueur peut quitter à n'importe quel moment
-                                    printf("merci d'avoir joue !");
+                                    printf("sauvegarde en cours");
+                                    void sauvegarderNoms ();
+                                    void sauvegarderPartie ();
+                                    printf("merci d'avoir joué !");
                                     exit(EXIT_SUCCESS);
                                     break;
                                 }
@@ -209,6 +213,10 @@ void menu() {
                             printf("annulation de la derniere action\n");
                             break;
                         }
+                        case 4 : { //si le joueur veut sauvegarder la partie
+                            void sauvegarderNoms ();
+                            void sauvegarderPartie ();
+                            
                     }
                 }break;
             }
