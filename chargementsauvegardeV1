@@ -3,7 +3,7 @@
 void chargerNoms(const char* sauvegarderNoms, char nomsJoueurs[MAX_JOUEURS][25]) {
     FILE* fichier = fopen(sauvegarderNoms, "r");  // ouvre le fichier en mode lecture
     if (fichier == NULL) {
-        printf("Aucun fichier de noms de joueurs trouvé.\n");
+        printf("Aucun fichier de noms de joueurs trouve.\n");
         return;
     }
     // chargement des noms des joueurs
@@ -11,13 +11,13 @@ void chargerNoms(const char* sauvegarderNoms, char nomsJoueurs[MAX_JOUEURS][25])
         fscanf(fichier, "%s", nomsJoueurs[i]);  // lit chaque nom du fichier
     }
     fclose(fichier);  // Ferme le fichier
-    printf("Noms des joueurs chargés avec succès.\n");
+    printf("Noms des joueurs charges avec succes.\n");
 }
 // charger la partie depuis le fichier
 void chargerPartie(char plateau[9][9], int posJoueurs[MAX_JOUEURS][25]) {
     FILE *fichier = fopen(sauvegarderPartie, "r");  // ouvre le fichier de sauvegarde pour lecture
     if (fichier == NULL) {
-        printf("Aucune partie sauvegardée trouvée.\n");
+        printf("Aucune partie sauvegardee trouvee.\n");
         return;
     }
     // chargement des positions des joueurs
@@ -32,7 +32,7 @@ void chargerPartie(char plateau[9][9], int posJoueurs[MAX_JOUEURS][25]) {
         }
     }
     fclose(fichier);  // ferme le fichier de sauvegarde
-    printf("Partie chargée avec succès.\n");
+    printf("Partie chargee avec succes.\n");
 }
 // afficher le plateau de jeu
 void afficherPlateau(char plateau[9][9]) {
