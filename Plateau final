@@ -1,0 +1,56 @@
+#include "header.h"
+
+//affiche le plateau en matrice 9x9
+void afficherPlateau(char plateau[TAILLE][TAILLE]) {
+    int passage = 0;
+    printf("    1    2    3    4    5    6    7    8    9 \n"); //numérotation des colonnes
+    printf("  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",
+           0xC9, 0xCD, 0xCD, 0xCD, 0xCD, 0xCB, 0xCD, 0xCD, 0xCD, 0xCD, 0xCB, 0xCD, 0xCD, 0xCD, 0xCD, 0xCB, 0xCD, 0xCD, 0xCD, 0xCD, 0xCB,
+           0xCD, 0xCD, 0xCD, 0xCD, 0xCB,0xCD, 0xCD, 0xCD, 0xCD, 0xCB,0xCD, 0xCD, 0xCD, 0xCD, 0xCB,0xCD, 0xCD, 0xCD, 0xCD, 0xCB,0xCD,0xCD,0xCD,0xCD, 0xBB);
+
+    for (int i = 0; i < TAILLE; i++) {
+        printf("%d ", i + 1);  // Numérotation des lignes
+        for (int j = 0; j < TAILLE; j++) {
+            if (plateau[i][j] == '|') {  // Barrière verticale
+                setColor(12); // Set color pour les barrières
+                printf("%c", 0xBA);
+                setColor(7); // remise à la couleur par defaut
+                passage=1;
+            } else {
+                printf("%c", 0xBA);
+            }
+            if (passage == 0) {
+               if (plateau[i][j] != '-') {
+                   printf(" %c  ", plateau[i][j]);
+               } else printf("    ");
+            } else {
+                printf("    ");
+                passage=0;
+            }
+        }
+        printf("%c\n", 0xBA);
+
+        if (i < TAILLE - 1) {  // Ligne horizontale entre chaque rangée sauf la dernière
+            printf("  %c", 0xCC);
+            for (int j = 0; j < TAILLE - 1; j++) {
+                if (plateau[i][j] == '-') {
+                    setColor(12); // Couleur barriére
+                    printf("%c%c%c%c", 0xCD, 0xCD, 0xCD, 0xCD);
+                    setColor(7); // couleur par défaut
+                    printf("%c", 0xCE);
+                    passage=1;
+                } else {
+                    printf("%c%c%c%c%c", 0xCD, 0xCD, 0xCD, 0xCD, 0xCE);
+                }
+
+            }
+            printf("%c%c%c%c%c\n", 0xCD, 0xCD, 0xCD, 0xCD, 0xB9);
+        }
+    }
+
+    // Dernière ligne horizontale en bas
+    printf("  %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",
+           0xC0, 0xC4, 0xC4, 0xC4, 0xC4, 0xC1, 0xC4, 0xC4, 0xC4, 0xC4, 0xC1, 0xC4, 0xC4, 0xC4, 0xC4, 0xC1, 0xC4, 0xC4, 0xC4,
+           0xC4, 0xC1, 0xC4, 0xC4, 0xC4, 0xC4, 0xC1, 0xC4, 0xC4, 0xC4, 0xC4, 0xC1, 0xC4, 0xC4, 0xC4, 0xC4, 0xC1, 0xC4, 0xC4,
+           0xC4, 0xC4, 0xC1, 0xC4, 0xC4, 0xC4, 0xC4, 0xD9);
+}
